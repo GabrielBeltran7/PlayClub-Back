@@ -40,6 +40,12 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      
+      imagen: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        
+      },
     },
     { freezeTableName: true, timestamps: false }
   );
