@@ -1,37 +1,46 @@
-const {DataTypes} = require("sequelize")
-
+const { DataTypes } = require("sequelize");
 
 // creamos la table User en  postgres  con sequelize, aca se definen todos los atrivbutos de la tabla
 
-module.exports = (sequelize)=>{
-sequelize.define ("User", {
-    id:{
-        type: DataTypes.UUID, 
-      
-        primaryKey: true,
-        defaultValue: DataTypes.UUIDV4
-    },
-    username:{
-        type: DataTypes.STRING, 
-        allowNull: false,
-       
+module.exports = (sequelize) => {
+  sequelize.define(
+    "User",
+    {
+      id: {
+        type: DataTypes.UUID,
 
-    },
-    email: {
+        primaryKey: true,
+        defaultValue: DataTypes.UUIDV4,
+      },
+      username: {
         type: DataTypes.STRING,
-        allowNull: false, 
+        allowNull: false,
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
 
         unique: true,
-        validate:{
-            isEmail:{
-                msg: "Debe ser un email valido"
-            }
-        }
+        validate: {
+          isEmail: {
+            msg: "Debe ser un email valido",
+          },
         },
-        password:{
+      },
+      password: {
         type: DataTypes.INTEGER,
-        allowNull: false
-    } 
+        allowNull: false,
+      },
+      admin: {
+        type: DataTypes.BOOLEAN,
 
-}, {freezeTableName: true, timestamps: false})
-}
+        defaultValue: false,
+      },
+      subadmin: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+    },
+    { freezeTableName: true, timestamps: false }
+  );
+};
