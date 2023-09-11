@@ -13,8 +13,6 @@ const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   })
 
-
-
 // ejecutamos la funcion de la creacion de la base de datos pasandole sequelize
 UserModel(sequelize);
 PostModel(sequelize)
@@ -27,6 +25,7 @@ User.hasMany(Post, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE"
 });
+
 // Relacion de Muchos A  uno. (Muchos post pertenecen  a un Usuario)
 Post.belongsTo(User)
 

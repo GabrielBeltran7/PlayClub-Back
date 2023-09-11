@@ -1,8 +1,8 @@
 const {Router} = require("express")
-const { postUserHandler,} = require("../handlers/usersHandlers")
+const { postUserHandler} = require("../Users/createusers")
+const {loginUsers} = require("../Users/loginusers")
 
 const usersRouter = Router();
-usersRouter.post("/", postUserHandler)   /// guarda los usuarios por body
-
-
+usersRouter.post("/", postUserHandler) 
+usersRouter.post("/login", loginUsers) 
 module.exports = usersRouter;

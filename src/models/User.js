@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 
+
 // creamos la table User en  postgres  con sequelize, aca se definen todos los atrivbutos de la tabla
 
 module.exports = (sequelize) => {
@@ -18,17 +19,10 @@ module.exports = (sequelize) => {
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false,
-
-        unique: true,
-        validate: {
-          isEmail: {
-            msg: "Debe ser un email valido",
-          },
-        },
+        allowNull: false, 
       },
       password: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       admin: {
