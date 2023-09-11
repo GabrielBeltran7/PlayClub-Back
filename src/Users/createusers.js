@@ -1,4 +1,4 @@
-const { User, Post } = require("../db");
+const { User} = require("../db");
 
 const bcrypt = require("bcrypt");
 
