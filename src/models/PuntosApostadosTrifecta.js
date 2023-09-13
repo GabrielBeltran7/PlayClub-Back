@@ -14,49 +14,31 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      win: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
 
-      cantidadpuntoswin: {
+      nombreapuesta: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      puesto1: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      puesto2: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      puesto3: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      puntosapostados: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-
-      exacta: {
+      puntosganados: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      },
-      
-      cantidadpuntosexacta: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-
-
-
-      trifecta: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      
-      cantidadpuntostrifecta: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-
-
-      superfecta: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-      
-      cantidadpuntossuperfecta: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-      },
-     
+      }
       
     },
     { freezeTableName: true, timestamps: true }
