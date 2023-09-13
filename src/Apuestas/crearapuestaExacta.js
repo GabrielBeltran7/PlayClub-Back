@@ -1,8 +1,8 @@
 
-const { PuntosapostadosWin, User } = require("../db");
+const { PuntosapostadosExacta, User } = require("../db");
 
-const postapuestaWin = async (req, res) => {
-  const { id, puntosganados, puntosapostados, nombreapuesta, puesto1, usermane } = req.body;
+const postapuestaExacta = async (req, res) => {
+  const { id, puntosganados, puntosapostados, nombreapuesta, puesto1, puesto2, usermane } = req.body;
   
   try {
     // Buscar el registro de usuario correspondiente al ID proporcionado
@@ -24,20 +24,22 @@ const postapuestaWin = async (req, res) => {
     await usuario.save();
 
     // Crear el registro de PuntosapostadosWin
-    const win = await PuntosapostadosWin.create({
+    const exacta = await PuntosapostadosExacta.create({
       nombreapuesta,
       puesto1,
+      puesto2,
       usermane,
       puntosapostados,
       puntosganados,
     });
 
-    return res.status(200).json(win);
+    return res.status(200).json(exacta);
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 };
 
 module.exports = {
-  postapuestaWin,
+  postapuestaExacta,
 };
+

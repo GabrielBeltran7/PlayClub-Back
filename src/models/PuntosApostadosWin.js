@@ -19,15 +19,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      corredor: {
+      puesto1: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      puntosapostadoswin: {
+      puntosapostados: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      puntosganadoswin: {
+      puntosganados: {
         type: DataTypes.INTEGER,
         allowNull: false,
       }

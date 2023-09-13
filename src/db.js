@@ -6,6 +6,7 @@ const UserModel = require("./models/User")
 const CorredorModel = require("./models/CrearCorredor")
 const RecargarpuntosModel =require ("./models/RecargarPuntos")
 const PuntosapostadosWinModel = require("./models/PuntosApostadosWin")
+const PuntosapostadosExactaModel = require("./models/PuntosApostadosExacta")
 
 // conexion a postgres utilizando variables del archivo env 
 const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT} = process.env;
@@ -20,6 +21,8 @@ UserModel(sequelize);
 CorredorModel(sequelize)
 RecargarpuntosModel(sequelize)
 PuntosapostadosWinModel(sequelize)
+PuntosapostadosExactaModel(sequelize)
+
 
 
 // aca vamos a crear las Relaciones
