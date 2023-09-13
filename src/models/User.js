@@ -1,6 +1,5 @@
 const { DataTypes } = require("sequelize");
 
-
 // creamos la table User en  postgres  con sequelize, aca se definen todos los atrivbutos de la tabla
 
 module.exports = (sequelize) => {
@@ -9,7 +8,6 @@ module.exports = (sequelize) => {
     {
       id: {
         type: DataTypes.UUID,
-
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
@@ -19,7 +17,7 @@ module.exports = (sequelize) => {
       },
       email: {
         type: DataTypes.STRING,
-        allowNull: false, 
+        allowNull: false,
       },
       password: {
         type: DataTypes.STRING,
@@ -34,11 +32,15 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      
+      cantidadtotal:{
+        type: DataTypes.INTEGER,
+        allowNull: true,
+        defaultValue: 0,
+      },
+
       imagen: {
         type: DataTypes.STRING,
         allowNull: false,
-        
       },
     },
     { freezeTableName: true, timestamps: true }
