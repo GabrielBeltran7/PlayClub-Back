@@ -1,12 +1,14 @@
 const { Crearcorredor } = require("../db");
 const postCorredor = async (req, res) => {
-  const { nombre, numero, imagen, descripcion } = req.body;
+  const { nombre, numero, imagen1,imagen2, imagen3, descripcion } = req.body;
   try {
     const nuevocorredor = await Crearcorredor.create({
       nombre,
       numero,
       descripcion,
-      imagen,
+      imagen1,
+      imagen2,
+      imagen3,
     });
     return res.status(200).json(nuevocorredor);
   } catch (error) {
