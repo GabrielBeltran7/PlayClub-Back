@@ -43,6 +43,8 @@ const getUsers = async (req, res) => {
   }
 };
 
+
+
 const getUserById = async (req, res) => {
   const { id } = req.params;
 
@@ -57,11 +59,10 @@ const getUserById = async (req, res) => {
     }
     return res.status(200).json(user);
   } catch (error) {
-    res.status(400).json({ error: error.message });
-  }
+    res.status(400).json({ error: error.message });
+  }
 };
-
 module.exports = {
   getUsers,
-  getUserById,
+  getUserById
 };
