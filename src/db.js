@@ -12,8 +12,13 @@ const PuntosapostadosSuperfectaModel = require ("./models/PuntosApostadosSuperfe
 const CarreraModel = require ("./models/CrearCarrera")
 
 // conexion a postgres utilizando variables del archivo env 
-const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT} = process.env;
-const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+const {EXTERNAL_HOST,
+    USER,
+    PASSWORD,
+    DATABASE,
+    PORT,
+    DIALECT,} = process.env;
+const sequelize = new Sequelize(`${DIALECT}://${USER}:${PASSWORD}@${EXTERNAL_HOST}:${PORT}/${DATABASE}`,
 {
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed

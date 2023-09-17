@@ -4,13 +4,6 @@ const cors = require("cors")  // permitir  inereaccion con otras paginas podemos
 
 const mainRouter = require("./routes/mainRouter")
 const app = express()
-
-// app.use(session({
-//   secret: 'your-secret-key',
-//   resave: false,
-//   saveUninitialized: false,
-// }));
-
 app.use(morgan("dev"))
 app.use(cors())
 
