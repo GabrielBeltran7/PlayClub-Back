@@ -2,6 +2,9 @@ const express = require("express");
 const morgan = require ("morgan")
 const cors = require("cors")  // permitir  inereaccion con otras paginas podemos restringir  las app que deseemos
 
+
+
+
 const mainRouter = require("./routes/mainRouter")
 const app = express()
 app.use(morgan("dev"))
