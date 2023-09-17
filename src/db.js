@@ -11,12 +11,24 @@ const PuntosapostadosTrifectaModel = require("./models/PuntosApostadosTrifecta")
 const PuntosapostadosSuperfectaModel = require ("./models/PuntosApostadosSuperfecta")
 const CarreraModel = require ("./models/CrearCarrera")
 
-// conexion a postgres utilizando variables del archivo env 
+// conexion LOCAL 
+// const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT} = process.env;
+// const sequelize = new Sequelize(`${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+// {
+//     logging: false, // set to console.log to see the raw SQL queries
+//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//   })
+
+
+
+
+// // CONEXION PARA SUBIR A RENDER  ********************
 const {EXTERNAL_HOST} = process.env;
 const sequelize = new Sequelize(EXTERNAL_HOST,
     
 {
     ssl: true,
+   
     logging: false, // set to console.log to see the raw SQL queries
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   })
