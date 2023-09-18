@@ -6,7 +6,7 @@ const { postapuestaSuperfecta } = require("../Apuestas/crearapuestaSuperfecta");
 const { getAllApuestas } = require("../Apuestas/getAllApuestas");
 
 const usersRouter = Router();
-usersRouter.post("/win/:id", postapuestaWin);
+usersRouter.post("/win", postapuestaWin);
 usersRouter.post("/exacta", postapuestaExacta);
 usersRouter.post("/trifecta", postapuestaTrifecta);
 usersRouter.post("/superfecta", postapuestaSuperfecta);

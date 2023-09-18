@@ -20,7 +20,7 @@ const CarreraModel = require("./models/CrearCarrera");
 //     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 //   }
 // );
-
+//aaaa
 // CONEXION PARA SUBIR A RENDER  ********************
 const { EXTERNAL_HOST } = process.env;
 const sequelize = new Sequelize(
