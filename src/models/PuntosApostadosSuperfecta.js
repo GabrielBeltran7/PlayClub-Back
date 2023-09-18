@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
-      usermane: {
+      username: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -42,8 +42,7 @@ module.exports = (sequelize) => {
       puntosganados: {
         type: DataTypes.INTEGER,
         allowNull: false,
-      }
-      
+      },
     },
     { freezeTableName: true, timestamps: true }
   );
