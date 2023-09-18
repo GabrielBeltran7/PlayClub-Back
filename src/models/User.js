@@ -14,14 +14,31 @@ module.exports = (sequelize) => {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          len: {
+            args: [5, 10],
+            msg: "El nombre debe tener entre 5 y 20 Caracteres",
+          },
+        },
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isEmail: {
+            msg: "Debe ser un email valido",
+          },
+        },
       },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          len: {
+            args: [5, 10],
+            msg: "La contraseña debe tener entre 5 y 10 Caracteres",
+          },
+        },
       },
       admin: {
         type: DataTypes.BOOLEAN,
@@ -32,7 +49,7 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      cantidadtotal:{
+      cantidadtotal: {
         type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: 0,

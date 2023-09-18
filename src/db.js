@@ -11,7 +11,7 @@ const PuntosapostadosTrifectaModel = require("./models/PuntosApostadosTrifecta")
 const PuntosapostadosSuperfectaModel = require("./models/PuntosApostadosSuperfecta");
 const CarreraModel = require("./models/CrearCarrera");
 
-// conexion LOCAL
+//conexion LOCAL
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT } = process.env;
 // const sequelize = new Sequelize(
 //   `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
