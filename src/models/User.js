@@ -14,12 +14,6 @@ module.exports = (sequelize) => {
       username: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: {
-            args: [5, 10],
-            msg: "El nombre debe tener entre 5 y 20 Caracteres",
-          },
-        },
       },
       email: {
         type: DataTypes.STRING,
@@ -33,12 +27,6 @@ module.exports = (sequelize) => {
       password: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          len: {
-            args: [5, 10],
-            msg: "La contraseña debe tener entre 5 y 10 Caracteres",
-          },
-        },
       },
       admin: {
         type: DataTypes.BOOLEAN,
