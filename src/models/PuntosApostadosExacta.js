@@ -28,11 +28,11 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
       puntosapostados: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
       puntosganados: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
       },
     },
