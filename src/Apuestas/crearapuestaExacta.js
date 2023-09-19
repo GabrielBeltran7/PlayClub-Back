@@ -2,7 +2,7 @@
 const { PuntosapostadosExacta, User } = require("../db");
 
 const postapuestaExacta = async (req, res) => {
-  const { id, puntosganados, puntosapostados, nombreapuesta, puesto1, puesto2, usermane } = req.body;
+  const { id, puntosganados, puntosapostados, nombreapuesta, puesto1, puesto2, username } = req.body;
   
   try {
     // Buscar el registro de usuario correspondiente al ID proporcionado
@@ -28,7 +28,7 @@ const postapuestaExacta = async (req, res) => {
       nombreapuesta,
       puesto1,
       puesto2,
-      usermane,
+      username,
       puntosapostados,
       puntosganados,
     });

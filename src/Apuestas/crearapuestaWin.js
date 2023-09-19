@@ -2,7 +2,7 @@
 const { PuntosapostadosWin, User } = require("../db");
 
 const postapuestaWin = async (req, res) => {
-  const { id, puntosganados, puntosapostados, nombreapuesta, puesto1, usermane } = req.body;
+  const { id, puntosganados, puntosapostados, nombreapuesta, puesto1, username } = req.body;
   
   try {
     // Buscar el registro de usuario correspondiente al ID proporcionado
@@ -26,7 +26,7 @@ const postapuestaWin = async (req, res) => {
     const win = await PuntosapostadosWin.create({
       nombreapuesta,
       puesto1,
-      usermane,
+      username,
       puntosapostados,
       puntosganados,
     });
