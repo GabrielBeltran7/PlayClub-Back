@@ -10,7 +10,7 @@ const PuntosapostadosExactaModel = require("./models/PuntosApostadosExacta")
 const PuntosapostadosTrifectaModel = require("./models/PuntosApostadosTrifecta")
 const PuntosapostadosSuperfectaModel = require ("./models/PuntosApostadosSuperfecta")
 const CarreraModel = require ("./models/CrearCarrera")
-const CrearlinkcamarasModel = require("./models/CrearLinkcarrera")
+const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
 
 // conexion LOCAL 
 // const {DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT} = process.env;
