@@ -1,6 +1,7 @@
 const { Sequelize } = require("sequelize");
 // para utilizar el atchivo env
 require("dotenv").config();
+
 // traemos la creacion de los modelos// tablas
 const UserModel = require("./models/User");
 const CorredorModel = require("./models/CrearCorredor");
