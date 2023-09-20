@@ -1,7 +1,15 @@
-const { Crearcorredor } = require("../db");
+
+
+const { Crearcorredor, Crearcarrera } = require("../db");
 const postCorredor = async (req, res) => {
-  const { nombre, numero, imagen1,imagen2, imagen3, descripcion } = req.body;
+  const { nombre, numero, imagen1,imagen2, imagen3, descripcion, CrearcarreraId, id } = req.body;
   try {
+    const carrera = await Crearcarrera.findByPk(id);
+
+    if (!carrera) {
+      return res.status(404).json({ error: "Carrera no encontrado" });
+    }
+
     const nuevocorredor = await Crearcorredor.create({
       nombre,
       numero,
@@ -9,6 +17,7 @@ const postCorredor = async (req, res) => {
       imagen1,
       imagen2,
       imagen3,
+      CrearcarreraId
     });
     return res.status(200).json(nuevocorredor);
   } catch (error) {
@@ -18,3 +27,5 @@ const postCorredor = async (req, res) => {
 module.exports = {
   postCorredor,
 };
+
+
