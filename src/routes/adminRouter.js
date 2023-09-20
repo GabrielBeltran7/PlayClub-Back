@@ -4,8 +4,9 @@ const {postPuntos} = require("../Admin/recargarPuntos")
 const {postCarrera} =require("../Admin/crearCarrera")
 const {getCorredor} = require("../Admin/getCorredor")
 const {getCarrera} = require ("../Admin/getCarrera")
-const {rolUsers} = require ("../Admin/rolUsers")
+const {rolUsers} = require ("../Admin/rolUsersUpdate")
 const {postLinkcamaras} = require("../Admin/crearLinkcarrera")
+const {updateLinkcamaras} = require ("../Admin/updateLinkCamaras")
 
 const usersRouter = Router();
 usersRouter.post("/postlinkcamaras", postLinkcamaras) 
@@ -15,5 +16,6 @@ usersRouter.post("/carrera", postCarrera)
 usersRouter.get("/corredor", getCorredor) 
 usersRouter.get("/carrera", getCarrera) 
 usersRouter.patch("/roluser", rolUsers) 
+usersRouter.patch("/updatelinkcamaras", updateLinkcamaras) 
 
-module.exports = usersRouter;
+module.exports = usersRouter;   

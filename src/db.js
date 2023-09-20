@@ -22,7 +22,7 @@ const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
 //   }
 // );
 //aaaa
-// CONEXION PARA SUBIR A RENDER  ********************
+// // CONEXION PARA SUBIR A RENDER  ********************
 const { EXTERNAL_HOST } = process.env;
 const sequelize = new Sequelize(
   EXTERNAL_HOST,
@@ -49,13 +49,21 @@ CrearlinkcamarasModel(sequelize)
 
 
 // aca vamos a crear las Relaciones
-const { User, Recargarpuntos } = sequelize.models;
+const { User, Recargarpuntos, Crearcarrera, Crearcorredor } = sequelize.models;
 // //Relacion de Uno a Muchos(Un usuario tiene muchos Post)
 User.hasMany(Recargarpuntos, {
   onDelete: "CASCADE",
   onUpdate: "CASCADE",
 });
 Recargarpuntos.belongsTo(User);
+// //Relacion de Uno a Muchos(Una carrera  tiene muchos corredores)
+
+
+Crearcarrera.hasMany(Crearcorredor, {
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+Crearcorredor.belongsTo(Crearcarrera);
 
 // exportamos la conexion de sequelize hasta la conexion del servidor
 module.exports = {
