@@ -1,15 +1,16 @@
 const { Sequelize } = require("sequelize");
 // para utilizar el atchivo env
 require("dotenv").config();
-// traemos la creacion de los modelos// tablas
-const UserModel = require("./models/User");
-const CorredorModel = require("./models/CrearCorredor");
-const RecargarpuntosModel = require("./models/RecargarPuntos");
-const PuntosapostadosWinModel = require("./models/PuntosApostadosWin");
-const PuntosapostadosExactaModel = require("./models/PuntosApostadosExacta");
-const PuntosapostadosTrifectaModel = require("./models/PuntosApostadosTrifecta");
-const PuntosapostadosSuperfectaModel = require("./models/PuntosApostadosSuperfecta");
-const CarreraModel = require("./models/CrearCarrera");
+// traemos la creacion de los modelos// tablas 
+const UserModel = require("./models/User")
+const CorredorModel = require("./models/CrearCorredor")
+const RecargarpuntosModel =require ("./models/RecargarPuntos")
+const PuntosapostadosWinModel = require("./models/PuntosApostadosWin")
+const PuntosapostadosExactaModel = require("./models/PuntosApostadosExacta")
+const PuntosapostadosTrifectaModel = require("./models/PuntosApostadosTrifecta")
+const PuntosapostadosSuperfectaModel = require ("./models/PuntosApostadosSuperfecta")
+const CarreraModel = require ("./models/CrearCarrera")
+const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
 
 //conexion LOCAL
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT } = process.env;
@@ -36,13 +37,16 @@ const sequelize = new Sequelize(
 
 // ejecutamos la funcion de la creacion de la base de datos pasandole sequelize
 UserModel(sequelize);
-CorredorModel(sequelize);
-RecargarpuntosModel(sequelize);
-PuntosapostadosWinModel(sequelize);
-PuntosapostadosExactaModel(sequelize);
-PuntosapostadosTrifectaModel(sequelize);
-PuntosapostadosSuperfectaModel(sequelize);
-CarreraModel(sequelize);
+CorredorModel(sequelize)
+RecargarpuntosModel(sequelize)
+PuntosapostadosWinModel(sequelize)
+PuntosapostadosExactaModel(sequelize)
+PuntosapostadosTrifectaModel(sequelize)
+PuntosapostadosSuperfectaModel(sequelize)
+CarreraModel(sequelize)
+CrearlinkcamarasModel(sequelize)
+
+
 
 // aca vamos a crear las Relaciones
 const { User, Recargarpuntos } = sequelize.models;
