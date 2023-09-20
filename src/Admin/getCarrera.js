@@ -9,4 +9,4 @@ const getCarrera = async (req, res) => {
 };
 module.exports = {
   getCarrera,
-};
+ };
