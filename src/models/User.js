@@ -18,6 +18,11 @@ module.exports = (sequelize) => {
       email: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+          isEmail: {
+            msg: "Debe ser un email valido",
+          },
+        },
       },
       password: {
         type: DataTypes.STRING,
@@ -32,7 +37,7 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      cantidadtotal:{
+      cantidadtotal: {
         type: DataTypes.INTEGER,
         allowNull: true,
         defaultValue: 0,

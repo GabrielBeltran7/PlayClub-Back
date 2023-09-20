@@ -16,6 +16,4 @@ usersRouter.get("/getUserByUsername/:username", getUserByUsername);
 usersRouter.get("/carreraactiva/:nombrecarrera", getCarreraActiva) 
 usersRouter.get("/getmisapuestas/:username", getAllmisApuestas)
 
-
-
 module.exports = usersRouter;
