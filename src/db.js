@@ -26,7 +26,8 @@ const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
 
 
 
-// // // CONEXION PARA SUBIR A RENDER  ********************
+// // CONEXION PARA SUBIR A RENDER  ********************
+
  const { EXTERNAL_HOST } = process.env;
 const sequelize = new Sequelize(
   EXTERNAL_HOST,
@@ -76,3 +77,4 @@ module.exports = {
   ...sequelize.models,
   conn: sequelize,
 };
+
