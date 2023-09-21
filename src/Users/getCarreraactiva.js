@@ -25,22 +25,18 @@ const getCarreraActiva = async (req, res) => {
   }
 };
 
-
-
-
-
 const getCarrerarycorredores = async (req, res) => {
   const { nombrecarrera } = req.params;
 
   try {
     // Intenta buscar la carrera por nombre de carrera y cargar los corredores asociados
-    const carrera = await Crearcarrera.findAll({
+    const carrera = await Crearcarrera.findOne({
       where: {
         nombrecarrera: nombrecarrera,
       },
       include: {
         model: Crearcorredor, // Nombre del modelo relacionado
-        attributes: ["id", "nombre", "numero"] // Atributos del modelo relacionado a recuperar
+        attributes: ["id", "nombre", "numero", "imagen1"] // Atributos del modelo relacionado a recuperar
       }
     });
 
