@@ -23,7 +23,7 @@ const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
 // );
 //aaaa
 // // CONEXION PARA SUBIR A RENDER  ********************
-// const { EXTERNAL_HOST } = process.env;
+ const { EXTERNAL_HOST } = process.env;
 const sequelize = new Sequelize(
   EXTERNAL_HOST,
 
@@ -56,8 +56,6 @@ User.hasMany(Recargarpuntos, {
   onUpdate: "CASCADE",
 });
 Recargarpuntos.belongsTo(User);
-// //Relacion de Uno a Muchos(Una carrera  tiene muchos corredores)
-
 
 Crearcarrera.hasMany(Crearcorredor, {
   onDelete: "CASCADE",
