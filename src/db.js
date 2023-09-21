@@ -1,8 +1,6 @@
 const { Sequelize } = require("sequelize");
 // para utilizar el atchivo env
 require("dotenv").config();
-<<<<<<< HEAD
-
 // traemos la creacion de los modelos// tablas
 const UserModel = require("./models/User");
 const CorredorModel = require("./models/CrearCorredor");
@@ -12,34 +10,10 @@ const PuntosapostadosExactaModel = require("./models/PuntosApostadosExacta");
 const PuntosapostadosTrifectaModel = require("./models/PuntosApostadosTrifecta");
 const PuntosapostadosSuperfectaModel = require("./models/PuntosApostadosSuperfecta");
 const CarreraModel = require("./models/CrearCarrera");
+const CrearlinkcamarasModel = require("./models/CrearLinkcamara");
 
 //conexion LOCAL
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT } = process.env;
-=======
-// traemos la creacion de los modelos// tablas 
-const UserModel = require("./models/User")
-const CorredorModel = require("./models/CrearCorredor")
-const RecargarpuntosModel =require ("./models/RecargarPuntos")
-const PuntosapostadosWinModel = require("./models/PuntosApostadosWin")
-const PuntosapostadosExactaModel = require("./models/PuntosApostadosExacta")
-const PuntosapostadosTrifectaModel = require("./models/PuntosApostadosTrifecta")
-const PuntosapostadosSuperfectaModel = require ("./models/PuntosApostadosSuperfecta")
-const CarreraModel = require ("./models/CrearCarrera")
-const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
-
-//conexion LOCAL
-// const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT } = process.env;
-// const sequelize = new Sequelize(
-//   `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
-//   {
-//     logging: false, // set to console.log to see the raw SQL queries
-//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//   }
-// );
-//aaaa
-// // CONEXION PARA SUBIR A RENDER  ********************
-const { EXTERNAL_HOST } = process.env;
->>>>>>> 326ed0b8640d7dd93135b046609d4a0a51a393c7
 const sequelize = new Sequelize(
   `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
   {
@@ -47,6 +21,16 @@ const sequelize = new Sequelize(
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
+//aaaa
+// // CONEXION PARA SUBIR A RENDER  ********************
+// const { EXTERNAL_HOST } = process.env;
+// const sequelize = new Sequelize(
+//   `${DB_DIALECT}://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
+//   {
+//     logging: false, // set to console.log to see the raw SQL queries
+//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+//   }
+// );
 //aaaa
 // // CONEXION PARA SUBIR A RENDER  ********************
 // const { EXTERNAL_HOST } = process.env;
@@ -63,7 +47,6 @@ const sequelize = new Sequelize(
 
 // ejecutamos la funcion de la creacion de la base de datos pasandole sequelize
 UserModel(sequelize);
-<<<<<<< HEAD
 CorredorModel(sequelize);
 RecargarpuntosModel(sequelize);
 PuntosapostadosWinModel(sequelize);
@@ -71,18 +54,7 @@ PuntosapostadosExactaModel(sequelize);
 PuntosapostadosTrifectaModel(sequelize);
 PuntosapostadosSuperfectaModel(sequelize);
 CarreraModel(sequelize);
-=======
-CorredorModel(sequelize)
-RecargarpuntosModel(sequelize)
-PuntosapostadosWinModel(sequelize)
-PuntosapostadosExactaModel(sequelize)
-PuntosapostadosTrifectaModel(sequelize)
-PuntosapostadosSuperfectaModel(sequelize)
-CarreraModel(sequelize)
-CrearlinkcamarasModel(sequelize)
-
-
->>>>>>> 326ed0b8640d7dd93135b046609d4a0a51a393c7
+CrearlinkcamarasModel(sequelize);
 
 // aca vamos a crear las Relaciones
 const { User, Recargarpuntos, Crearcarrera, Crearcorredor } = sequelize.models;
@@ -93,7 +65,6 @@ User.hasMany(Recargarpuntos, {
 });
 Recargarpuntos.belongsTo(User);
 // //Relacion de Uno a Muchos(Una carrera  tiene muchos corredores)
-
 
 Crearcarrera.hasMany(Crearcorredor, {
   onDelete: "CASCADE",
