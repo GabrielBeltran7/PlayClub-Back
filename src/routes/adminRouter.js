@@ -14,10 +14,11 @@ const {agregarPuntosAUsuarios} =require("../Admin/crearBonosaUsuarios")
 const usersRouter = Router();
 usersRouter.post("/postlinkcamaras", postLinkcamaras) 
 usersRouter.post("/corredor", postCorredor) 
-usersRouter.post("/postpuntossubadminausuario", postPuntosSubadminaUsuario) 
 usersRouter.post("/postpuntosadminasubadmin", postPuntosAdminaSubadmin) 
+usersRouter.post("/postpuntossubadminausuario", postPuntosSubadminaUsuario) 
+
 usersRouter.post("/carrera", postCarrera) 
- usersRouter.post("/agregar-puntos-a-usuarios", agregarPuntosAUsuarios) 
+ usersRouter.post("/agregarpuntosausuarios", agregarPuntosAUsuarios) 
 usersRouter.get("/corredor", getCorredor) 
 usersRouter.get("/carrera", getCarrera) 
 usersRouter.patch("/roluser", rolUsers) 
