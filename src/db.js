@@ -22,7 +22,11 @@ const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
 //   }
 // );
 //aaaa
-// // CONEXION PARA SUBIR A RENDER  ********************
+
+
+
+
+// // // CONEXION PARA SUBIR A RENDER  ********************
  const { EXTERNAL_HOST } = process.env;
 const sequelize = new Sequelize(
   EXTERNAL_HOST,
@@ -34,6 +38,9 @@ const sequelize = new Sequelize(
     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   }
 );
+
+
+
 
 // ejecutamos la funcion de la creacion de la base de datos pasandole sequelize
 UserModel(sequelize);

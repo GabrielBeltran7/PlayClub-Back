@@ -1,7 +1,8 @@
 const { User, Recargarpuntos } = require("../db");
 
 const agregarPuntosAUsuarios = async (req, res) => {
-  const { cantidad } = req.body;
+  const { cantidad, username } = req.body;
+  const adminUsername = username;
 
   try {
     // Validar que la cantidad sea un número positivo
@@ -22,17 +23,35 @@ const agregarPuntosAUsuarios = async (req, res) => {
       return res.status(404).json({ message: "No hay usuarios elegibles para agregar puntos." });
     }
 
+    // Consulta al Usuario Admin por nombre de usuario
+    const admin = await User.findOne({ where: { username: adminUsername, admin: true } });
+
+    // Verificar si el Usuario Admin existe
+    if (!admin) {
+      return res.status(404).json({ message: `El Usuario Administrador ${adminUsername} no esta autorizado para dar Bonos.` });
+    }
+
+    // Verificar si el Usuario Admin tiene suficientes puntos
+    if (admin.cantidadtotal < cantidad * usuarios.length) {
+      return res.status(400).json({ error: "El Usuario Admin no tiene suficientes puntos para realizar esta operación." });
+    }
+
+    // Restar la cantidad total de puntos al Usuario Admin
+    const nuevaCantidadTotalAdmin = admin.cantidadtotal - cantidad * usuarios.length;
+    await admin.update({ cantidadtotal: nuevaCantidadTotalAdmin });
+
     // Agregar la cantidad deseada de puntos a cada usuario
     for (const usuario of usuarios) {
       // Calcular la nueva cantidad total de puntos para el usuario
-      const nuevaCantidadTotal = usuario.cantidadtotal + cantidad;
+      const nuevaCantidadTotalUsuario = usuario.cantidadtotal + cantidad;
 
       // Actualizar la cantidadtotal del usuario
-      await usuario.update({ cantidadtotal: nuevaCantidadTotal });
+      await usuario.update({ cantidadtotal: nuevaCantidadTotalUsuario });
 
       // Registrar la transacción de recarga de puntos en la tabla de registros
       await Recargarpuntos.create({
         cantidad,
+        usernameAdmin:adminUsername,
         UserId: usuario.id,
         // Otros campos relacionados con la transacción
       });
@@ -47,3 +66,6 @@ const agregarPuntosAUsuarios = async (req, res) => {
 module.exports = {
   agregarPuntosAUsuarios,
 };
+
+
+
