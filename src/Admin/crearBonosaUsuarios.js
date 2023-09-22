@@ -1,10 +1,12 @@
 const { User, Recargarpuntos } = require("../db");
 
 const agregarPuntosAUsuarios = async (req, res) => {
-  const { cantidad, username } = req.body;
+  let { cantidad, username } = req.body; // Mantén cantidad como string inicialmente
   const adminUsername = username;
 
   try {
+    cantidad = parseInt(cantidad, 10); // Convierte cantidad en un número entero
+
     // Validar que la cantidad sea un número positivo
     if (isNaN(cantidad) || cantidad <= 0) {
       return res.status(400).json({ error: "La cantidad debe ser un número positivo." });
@@ -28,7 +30,7 @@ const agregarPuntosAUsuarios = async (req, res) => {
 
     // Verificar si el Usuario Admin existe
     if (!admin) {
-      return res.status(404).json({ message: `El Usuario Administrador ${adminUsername} no esta autorizado para dar Bonos.` });
+      return res.status(404).json({ message: `El Usuario Administrador ${adminUsername} no está autorizado para dar Bonos.` });
     }
 
     // Verificar si el Usuario Admin tiene suficientes puntos
@@ -51,7 +53,7 @@ const agregarPuntosAUsuarios = async (req, res) => {
       // Registrar la transacción de recarga de puntos en la tabla de registros
       await Recargarpuntos.create({
         cantidad,
-        usernameAdmin:adminUsername,
+        usernameAdmin: adminUsername,
         UserId: usuario.id,
         // Otros campos relacionados con la transacción
       });
@@ -66,6 +68,4 @@ const agregarPuntosAUsuarios = async (req, res) => {
 module.exports = {
   agregarPuntosAUsuarios,
 };
-
-
 

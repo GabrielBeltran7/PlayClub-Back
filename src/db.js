@@ -21,13 +21,12 @@ const CrearlinkcamarasModel= require("./models/CrearLinkcamara")
 //     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 //   }
 // );
-//aaaa
 
 
 
 
-// // CONEXION PARA SUBIR A RENDER  ********************
 
+// // // // CONEXION PARA SUBIR A RENDER  ********************
  const { EXTERNAL_HOST } = process.env;
 const sequelize = new Sequelize(
   EXTERNAL_HOST,
