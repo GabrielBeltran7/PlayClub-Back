@@ -16,12 +16,12 @@ module.exports = (sequelize) => {
       },
       precio: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
       },
       
       usernameAdmin: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       }
       
  
