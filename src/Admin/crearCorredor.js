@@ -1,8 +1,6 @@
-
-
 const { Crearcorredor, Crearcarrera } = require("../db");
 const postCorredor = async (req, res) => {
-  const { nombre, numero, imagen1,imagen2, imagen3, descripcion, CrearcarreraId, id } = req.body;
+  const { nombre, numero, imagen1, descripcion, CrearcarreraId, id } = req.body;
   try {
     const carrera = await Crearcarrera.findByPk(id);
 
@@ -15,9 +13,7 @@ const postCorredor = async (req, res) => {
       numero,
       descripcion,
       imagen1,
-      imagen2,
-      imagen3,
-      CrearcarreraId
+      CrearcarreraId,
     });
     return res.status(200).json(nuevocorredor);
   } catch (error) {
@@ -27,5 +23,3 @@ const postCorredor = async (req, res) => {
 module.exports = {
   postCorredor,
 };
-
-
