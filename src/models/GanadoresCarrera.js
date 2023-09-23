@@ -1,45 +1,39 @@
 const { DataTypes } = require("sequelize");
 
+// creamos la table Post en  postgres  con sequelize, aca se definen todos los atrivbutos de la tabla
 module.exports = (sequelize) => {
   sequelize.define(
-    "Crearcarrera",
+    "GanadoresCarrera",
     {
       id: {
         type: DataTypes.UUID,
         primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
       },
-      nombrecarrera: {
+      username: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      usernameAdmin: {
+
+      nombreCarrera: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      porcentajeWin: {
-        type: DataTypes.INTEGER,
+      primerPuesto: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
-      porcentajeExacta: {
-        type: DataTypes.INTEGER,
+      segundoPuesto: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
-      porcentajeTrifecta: {
-        type: DataTypes.INTEGER,
+      tercerPuesto: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
-      porcentajeSuperfecta: {
-        type: DataTypes.INTEGER,
+      cuartoPuesto: {
+        type: DataTypes.STRING,
         allowNull: false,
-      },
-      fechadecarrera: {
-        type: DataTypes.DATEONLY,
-        allowNull: false,
-      },
-      activo: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: true,
       },
     },
     { freezeTableName: true, timestamps: true }

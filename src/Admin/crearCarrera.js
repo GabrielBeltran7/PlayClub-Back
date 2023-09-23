@@ -1,10 +1,11 @@
 const { Crearcarrera } = require("../db");
 const postCarrera = async (req, res) => {
-  const { nombrecarrera, porcentajeWin, porcentajeExacta, porcentajeTrifecta, porcentajeSuperfecta, username } = req.body;
+  const { nombrecarrera,fechadecarrera, porcentajeWin, porcentajeExacta, porcentajeTrifecta, porcentajeSuperfecta, username } = req.body;
   const usernameAdmin = username;
   try {
     const carrera = await Crearcarrera.create({
       usernameAdmin,
+      fechadecarrera,
       nombrecarrera,
       porcentajeWin,
       porcentajeExacta,
