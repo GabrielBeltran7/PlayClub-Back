@@ -37,7 +37,11 @@ module.exports = (sequelize) => {
         type: DataTypes.DATEONLY,
         allowNull: false,
       },
-      activo: {
+      actydescarrera: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
+      actydescarrerayganadores: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },

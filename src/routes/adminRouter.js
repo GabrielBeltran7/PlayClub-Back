@@ -12,6 +12,7 @@ const { cargarPuntosAlAdmin } = require("../Admin/cargarPuntosaAdmin");
 const {postPuntosAdminaSubadmin} = require("../Admin/recargarPuntosAdminaSubadmin");
 const { agregarPuntosAUsuarios } = require("../Admin/crearBonosaUsuarios");
 const { postCarrerayGanadores } = require("../Admin/postCarrerayGanadores");
+const {activaroDesactivarCarrera} = require("../Admin/activarodesactivarCarrera")
 
 const usersRouter = Router();
 usersRouter.post("/postlinkcamaras", postLinkcamaras);
@@ -24,6 +25,7 @@ usersRouter.post("/agregarpuntosausuarios", agregarPuntosAUsuarios);
 usersRouter.get("/corredor", getCorredor);
 usersRouter.get("/carrera", getCarrera);
 usersRouter.patch("/roluser", rolUsers);
+usersRouter.patch("/activarodesactivarcarrera", activaroDesactivarCarrera);
 usersRouter.post("/carrerayganadores", postCarrerayGanadores);
 
 module.exports = usersRouter;

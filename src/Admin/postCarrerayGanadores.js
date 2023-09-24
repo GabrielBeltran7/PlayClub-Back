@@ -1,4 +1,4 @@
-const { GanadoresCarrera, Crearcarrera } = require("../db");
+const { GanadoresCarrera } = require("../db");
 const postCarrerayGanadores = async (req, res) => {
   const {
     id,
