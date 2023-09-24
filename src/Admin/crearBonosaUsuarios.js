@@ -35,7 +35,7 @@ const agregarPuntosAUsuarios = async (req, res) => {
 
     // Verificar si el Usuario Admin tiene suficientes puntos
     if (admin.cantidadtotal < cantidad * usuarios.length) {
-      return res.status(400).json({ error: "El Usuario Admin no tiene suficientes puntos para realizar esta operación." });
+      return res.status(400).json({ error:  `El Usuario ${adminUsername} no tiene suficientes puntos para realizar esta operación.` });
     }
 
     // Restar la cantidad total de puntos al Usuario Admin

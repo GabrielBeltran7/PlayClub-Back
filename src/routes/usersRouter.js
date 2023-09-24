@@ -9,12 +9,12 @@ const {
 } = require("../Users/getCarreraactiva");
 const { getLinkcamaras } = require("../Users/getLinkcamaras");
 const { getAllmisApuestas } = require("../Users/getUsersMisApuestas");
-const { getGanadoresCarrera } = require("../Users/getGanadoresCarrera");
+const { getCarreraGanadores } = require("../Users/getCarrerayGanadores");
 
 const usersRouter = Router();
 usersRouter.post("/", postUserHandler);
 usersRouter.post("/login", loginUsers);
-usersRouter.get("/ganadores", getGanadoresCarrera);
+usersRouter.get("/ganadores", getCarreraGanadores);
 usersRouter.get("/linkcamaras", getLinkcamaras);
 usersRouter.get("/", getUsers);
 usersRouter.get("/:id", getUserById);

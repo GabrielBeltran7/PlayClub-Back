@@ -12,6 +12,7 @@ const PuntosapostadosSuperfectaModel = require("./models/PuntosApostadosSuperfec
 const CarreraModel = require("./models/CrearCarrera");
 const CrearlinkcamarasModel = require("./models/CrearLinkcamara");
 const cargarGanadoresModel = require("./models/GanadoresCarrera");
+const postCarrerayGanadores = require("./models/GanadoresCarrera")
 
 // //conexion LOCAL
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT } = process.env;
@@ -24,19 +25,7 @@ const sequelize = new Sequelize(
 );
 
 //aaaa
-
-// CONEXION PARA SUBIR A RENDER  ********************
-// const { EXTERNAL_HOST } = process.env;
-// const sequelize = new Sequelize(
-//   EXTERNAL_HOST,
-
-//   {
-//     logging: false, // set to console.log to see the raw SQL queries
-//     native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-//   }
-// );
-
-// // // // CONEXION PARA SUBIR A RENDER  ********************
+// // // CONEXION PARA SUBIR A RENDER  ********************
 // const { EXTERNAL_HOST } = process.env;
 // const sequelize = new Sequelize(
 //   EXTERNAL_HOST,
@@ -60,9 +49,10 @@ PuntosapostadosSuperfectaModel(sequelize);
 CarreraModel(sequelize);
 CrearlinkcamarasModel(sequelize);
 cargarGanadoresModel(sequelize);
+postCarrerayGanadores(sequelize)
 
 // aca vamos a crear las Relaciones
-const { User, Recargarpuntos, Crearcarrera, Crearcorredor } = sequelize.models;
+const { User, Recargarpuntos, Crearcarrera, Crearcorredor, GanadoresCarrera } = sequelize.models;
 // //Relacion de Uno a Muchos(Un usuario tiene muchos Post)
 User.hasMany(Recargarpuntos, {
   onDelete: "CASCADE",
@@ -75,6 +65,14 @@ Crearcarrera.hasMany(Crearcorredor, {
   onUpdate: "CASCADE",
 });
 Crearcorredor.belongsTo(Crearcarrera);
+
+
+
+Crearcarrera.hasMany(GanadoresCarrera, {
+  onDelete: "CASCADE",
+  onUpdate: "CASCADE",
+});
+GanadoresCarrera.belongsTo(Crearcarrera);
 
 // exportamos la conexion de sequelize hasta la conexion del servidor
 module.exports = {
