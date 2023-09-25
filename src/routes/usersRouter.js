@@ -10,10 +10,13 @@ const {
 const { getLinkcamaras } = require("../Users/getLinkcamaras");
 const { getAllmisApuestas } = require("../Users/getUsersMisApuestas");
 const { getCarreraGanadores } = require("../Users/getCarrerayGanadores");
-
+const {iniciarRecuperacionContrasena}= require ("../Users/RecuperarContraseña")
 const usersRouter = Router();
+
 usersRouter.post("/", postUserHandler);
 usersRouter.post("/login", loginUsers);
+
+usersRouter.post("/recuperarpassword", iniciarRecuperacionContrasena);
 
 usersRouter.get("/linkcamaras", getLinkcamaras);
 usersRouter.get("/", getUsers);
