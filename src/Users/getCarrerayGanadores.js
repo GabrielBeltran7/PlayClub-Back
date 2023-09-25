@@ -1,17 +1,22 @@
+
+
+
 const { GanadoresCarrera, Crearcarrera } = require("../db");
 const getCarreraGanadores = async (req, res) => {
-  const { nombrecarrera } = req.body;
+  const { nombrecarrera } = req.params;
+  console.log("99999999999999999999999999",nombrecarrera)
 
   try {
     // Intenta buscar la carrera por nombre de carrera y cargar los corredores asociados
     const carrera = await Crearcarrera.findOne({
       where: {
         nombrecarrera: nombrecarrera,
-        activo:true
+        
       },
       include: {
         model: GanadoresCarrera, // Nombre del modelo relacionado
-        attributes: [ "primerPuesto", "segundoPuesto","tercerPuesto","cuartoPuesto"] // Atributos del modelo relacionado a recuperar
+        attributes: [ "primerPuesto", "segundoPuesto","tercerPuesto","cuartoPuesto"], // Atributos del modelo relacionado a recuperar
+
       }
     });
 
