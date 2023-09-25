@@ -10,11 +10,14 @@ const {
 const { getLinkcamaras } = require("../Users/getLinkcamaras");
 const { getAllmisApuestas } = require("../Users/getUsersMisApuestas");
 const { getCarreraGanadores } = require("../Users/getCarrerayGanadores");
-
+const {iniciarRecuperacionContrasena}= require ("../Users/RecuperarContraseña")
 const usersRouter = Router();
+
 usersRouter.post("/", postUserHandler);
 usersRouter.post("/login", loginUsers);
-usersRouter.get("/ganadores", getCarreraGanadores);
+
+usersRouter.post("/recuperarpassword", iniciarRecuperacionContrasena);
+
 usersRouter.get("/linkcamaras", getLinkcamaras);
 usersRouter.get("/", getUsers);
 usersRouter.get("/:id", getUserById);
@@ -22,5 +25,6 @@ usersRouter.get("/getUserByUsername/:username", getUserByUsername);
 usersRouter.get("/carreraactiva/:nombrecarrera", getCarreraActiva);
 usersRouter.get("/getmisapuestas/:username", getAllmisApuestas);
 usersRouter.get("/carreraycorredores/:nombrecarrera", getCarrerarycorredores);
+usersRouter.get("/ganadores/:nombrecarrera", getCarreraGanadores);
 
 module.exports = usersRouter;
