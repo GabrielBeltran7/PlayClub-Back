@@ -18,6 +18,7 @@ const activaroDesactivarCarrera = async (req, res) => {
     } else if (rol === "desactivarcarrera") {
       carrera.actydescarrera = false;
     } 
+    
       else if (rol === "activarcarrerayganadores") {
       carrera.actydescarrerayganadores = true;
     } else if (rol === "desactivarcarrerayganadores") {
