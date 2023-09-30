@@ -1,6 +1,7 @@
 const { User } = require("../db");
 const nodemailer = require('nodemailer');
 const crypto = require('crypto');
+const bcrypt = require("bcrypt");
 
 // Configura Nodemailer para enviar correos electrónicos
 const transporter = nodemailer.createTransport({
@@ -32,9 +33,9 @@ async function iniciarRecuperacionContrasena(req, res) {
 
     // Genera una nueva contraseña aleatoria
     const nuevaContrasena = generarNuevaContrasena();
-
+    const hashedPassword = await bcrypt.hash(nuevaContrasena, 10);
     // Actualiza la contraseña en la base de datos
-    usuario.password = nuevaContrasena;
+    usuario.password = hashedPassword;
     await usuario.save();
 
     // Envía un correo electrónico con la nueva contraseña
