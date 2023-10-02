@@ -12,7 +12,7 @@ const PuntosapostadosSuperfectaModel = require("./models/PuntosApostadosSuperfec
 const CarreraModel = require("./models/CrearCarrera");
 const CrearlinkcamarasModel = require("./models/CrearLinkcamara");
 const cargarGanadoresModel = require("./models/GanadoresCarrera");
-const postCarrerayGanadores = require("./models/GanadoresCarrera")
+const postCarrerayGanadores = require("./models/GanadoresCarrera");
 
 // //conexion LOCAL
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT } = process.env;
@@ -24,8 +24,7 @@ const sequelize = new Sequelize(
   }
 );
 
-
-// // // CONEXION PARA SUBIR A RENDER  ********************
+// // // // CONEXION PARA SUBIR A RENDER  ********************
 // const { EXTERNAL_HOST } = process.env;
 // const sequelize = new Sequelize(
 //   EXTERNAL_HOST,
@@ -38,9 +37,6 @@ const sequelize = new Sequelize(
 //   }
 // );
 
-
-
-
 // ejecutamos la funcion de la creacion de la base de datos pasandole sequelize
 UserModel(sequelize);
 CorredorModel(sequelize);
@@ -52,10 +48,11 @@ PuntosapostadosSuperfectaModel(sequelize);
 CarreraModel(sequelize);
 CrearlinkcamarasModel(sequelize);
 cargarGanadoresModel(sequelize);
-postCarrerayGanadores(sequelize)
+postCarrerayGanadores(sequelize);
 
 // aca vamos a crear las Relaciones
-const { User, Recargarpuntos, Crearcarrera, Crearcorredor, GanadoresCarrera } = sequelize.models;
+const { User, Recargarpuntos, Crearcarrera, Crearcorredor, GanadoresCarrera } =
+  sequelize.models;
 // //Relacion de Uno a Muchos(Un usuario tiene muchos Post)
 User.hasMany(Recargarpuntos, {
   onDelete: "CASCADE",
@@ -68,8 +65,6 @@ Crearcarrera.hasMany(Crearcorredor, {
   onUpdate: "CASCADE",
 });
 Crearcorredor.belongsTo(Crearcarrera);
-
-
 
 Crearcarrera.hasMany(GanadoresCarrera, {
   onDelete: "CASCADE",
