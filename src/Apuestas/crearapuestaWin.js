@@ -37,13 +37,13 @@ const postapuestaWin = async (req, res) => {
 
     // Si el username es igual a "Admin," sumar los puntos apostados al usuario "Admin"
     
-      const adminUsuario = await User.findOne({
-        where: { username: "Admin" },
-      });
-      if (adminUsuario) {
-        adminUsuario.cantidadtotal += puntosapostados;
-        await adminUsuario.save();
-      }
+      // const adminUsuario = await User.findOne({
+      //   where: { username: "Admin" },
+      // });
+      // if (adminUsuario) {
+      //   adminUsuario.cantidadtotal += puntosapostados;
+      //   await adminUsuario.save();
+      // }
     
 
     // Crear el registro de PuntosapostadosWin
