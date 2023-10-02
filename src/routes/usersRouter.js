@@ -11,12 +11,15 @@ const { getLinkcamaras } = require("../Users/getLinkcamaras");
 const { getAllmisApuestas } = require("../Users/getUsersMisApuestas");
 const { getCarreraGanadores } = require("../Users/getCarrerayGanadores");
 const {iniciarRecuperacionContrasena}= require ("../Users/RecuperarContraseña")
+const {actualizarPerfilUsuarios} = require ("../Users/ActualizarPerfilUsuarios")
+const {ActualizarPaswordUsuario} = require("../Users/ActualizarPaswordUsuario")
 const usersRouter = Router();
 
 usersRouter.post("/", postUserHandler);
 usersRouter.post("/login", loginUsers);
-
+usersRouter.patch("/actualizarperfilusuario", actualizarPerfilUsuarios);
 usersRouter.post("/recuperarpassword", iniciarRecuperacionContrasena);
+usersRouter.post("/actualizarpaswordusuario", ActualizarPaswordUsuario);
 
 usersRouter.get("/linkcamaras", getLinkcamaras);
 usersRouter.get("/", getUsers);

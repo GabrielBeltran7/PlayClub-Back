@@ -36,13 +36,13 @@ const postapuestaExacta = async (req, res) => {
 
     // Si el username es igual a "Admin," buscar al usuario "Admin" y sumar los puntos apostados
     
-      const adminUsuario = await User.findOne({
-        where: { username: "Admin" },
-      });
-      if (adminUsuario) {
-        adminUsuario.cantidadtotal += puntosapostadosNumeric;
-        await adminUsuario.save();
-      }
+      // const adminUsuario = await User.findOne({
+      //   where: { username: "Admin" },
+      // });
+      // if (adminUsuario) {
+      //   adminUsuario.cantidadtotal += puntosapostadosNumeric;
+      //   await adminUsuario.save();
+      // }
     
 
     // Guardar los cambios en la base de datos del usuario
