@@ -27,6 +27,15 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      iDprimerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }, 
+      iDsegundoPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }, 
+      
       puntosapostados: {
         type: DataTypes.FLOAT,
         allowNull: false,

@@ -19,19 +19,38 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+
       primerPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      iDprimerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
       segundoPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      iDsegundoPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
       tercerPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      iDtercerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       cuartoPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      iDcuartoPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
