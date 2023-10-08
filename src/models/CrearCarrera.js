@@ -12,6 +12,10 @@ module.exports = (sequelize) => {
       nombrecarrera: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: {
+          value: true, // Para indicar que el valor debe ser único
+          msg: 'El nombre de la carrera debe ser único.', // Opcional: Mensaje personalizado para el error
+        }
       },
       usernameAdmin: {
         type: DataTypes.STRING,

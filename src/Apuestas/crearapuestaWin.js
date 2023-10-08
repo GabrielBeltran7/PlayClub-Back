@@ -1,12 +1,12 @@
-const { PuntosapostadosWin,  User } = require("../db");
+const { PuntosapostadosWin, Crearcorredor, User } = require("../db");
 
 const postapuestaWin = async (req, res) => {
   const {
     id,
     puntosganados,
     nombreapuesta,
-    puesto1,
     username,
+    iDprimerPuesto,
   } = req.body;
 
   // Convertir puntosapostados a un número entero utilizando parseInt
@@ -35,21 +35,12 @@ const postapuestaWin = async (req, res) => {
     // Guardar los cambios en la base de datos
     await usuario.save();
 
-    // Si el username es igual a "Admin," sumar los puntos apostados al usuario "Admin"
-    
-      // const adminUsuario = await User.findOne({
-      //   where: { username: "Admin" },
-      // });
-      // if (adminUsuario) {
-      //   adminUsuario.cantidadtotal += puntosapostados;
-      //   await adminUsuario.save();
-      // }
-    
+      const namecorreodor1 = await Crearcorredor.findByPk(iDprimerPuesto);
 
-    // Crear el registro de PuntosapostadosWin
     const win = await PuntosapostadosWin.create({
+      iDprimerPuesto,
       nombreapuesta,
-      puesto1,
+      puesto1:namecorreodor1.nombre,
       username,
       puntosapostados,
       puntosganados,

@@ -15,6 +15,23 @@ module.exports = (sequelize) => {
         allowNull: false,
       },
 
+
+      iDprimerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }, 
+      iDsegundoPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }, 
+      iDtercerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }, 
+      iDcuartoPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }, 
       nombreapuesta: {
         type: DataTypes.STRING,
         allowNull: false,

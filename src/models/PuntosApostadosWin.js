@@ -18,7 +18,11 @@ module.exports = (sequelize) => {
       nombreapuesta: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
+      }, 
+      iDprimerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }, 
       puesto1: {
         type: DataTypes.STRING,
         allowNull: false,

@@ -18,20 +18,43 @@ module.exports = (sequelize) => {
       nombreCarrera: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: {
+          value: true, // Para indicar que el valor debe ser único
+          msg: 'Ya has registrado ganadores para esta carrera, gracias.', // Opcional: Mensaje personalizado para el error
+        }
       },
+
       primerPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      iDprimerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
       segundoPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      iDsegundoPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+
       tercerPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      iDtercerPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       cuartoPuesto: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      iDcuartoPuesto: {
         type: DataTypes.STRING,
         allowNull: false,
       },
