@@ -1,4 +1,4 @@
-const { PuntosapostadosTrifecta, User } = require("../db");
+const { PuntosapostadosTrifecta,Crearcorredor, User } = require("../db");
 
 const postapuestaTrifecta = async (req, res) => {
   const {
@@ -6,10 +6,10 @@ const postapuestaTrifecta = async (req, res) => {
     puntosganados,
     puntosapostados,
     nombreapuesta,
-    puesto1,
-    puesto2,
-    puesto3,
     username,
+    iDprimerPuesto,
+    iDsegundoPuesto,
+    iDtercerPuesto,
   } = req.body;
 
   // Convertir puntosapostados a un número entero utilizando parseInt
@@ -34,27 +34,23 @@ const postapuestaTrifecta = async (req, res) => {
     } else {
       usuario.cantidadtotal -= puntosapostadosNumeric;
     }
-
-    // Si el username es igual a "Admin," buscar al usuario "Admin" y sumar los puntos apostados
-    
-      // const adminUsuario = await User.findOne({
-      //   where: { username: "Admin" },
-      // });
-      // if (adminUsuario) {
-      //   adminUsuario.cantidadtotal += puntosapostadosNumeric;
-      //   await adminUsuario.save();
-      // }
-    
-
     // Guardar los cambios en la base de datos del usuario
     await usuario.save();
 
+
+
+    const namecorreodor1 = await Crearcorredor.findByPk(iDprimerPuesto);
+    const namecorreodor2 = await Crearcorredor.findByPk(iDsegundoPuesto);
+    const namecorreodor3 = await Crearcorredor.findByPk(iDtercerPuesto);
     // Crear el registro de PuntosapostadosExacta
     const trifecta = await PuntosapostadosTrifecta.create({
       nombreapuesta,
-      puesto1,
-      puesto2,
-      puesto3,
+      iDprimerPuesto,
+      iDsegundoPuesto,
+      iDtercerPuesto,
+      puesto1:namecorreodor1.nombre,
+      puesto2:namecorreodor2.nombre,
+      puesto3:namecorreodor3.nombre,
       username,
       puntosapostados: puntosapostadosNumeric, // Utilizamos el valor convertido
       puntosganados,

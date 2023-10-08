@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
       nombreCarrera: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: {
+          value: true, // Para indicar que el valor debe ser único
+          msg: 'Ya has registrado ganadores para esta carrera, gracias.', // Opcional: Mensaje personalizado para el error
+        }
       },
 
       primerPuesto: {
