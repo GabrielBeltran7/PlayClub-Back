@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
         allowNull: true,
       },
       
-      usernameAdmin: {
+      usernameSubadmin: {
         type: DataTypes.STRING,
         allowNull: true,
       }
