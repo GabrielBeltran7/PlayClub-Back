@@ -58,7 +58,7 @@ const agregarPuntosAUsuarios = async (req, res) => {
       // Registrar la transacción de recarga de puntos en la tabla de registros
       await Recargarpuntos.create({
         cantidad,
-        usernameSubadmin: subadminUsername,
+        usernameAdmin: `Bonos de ${subadminUsername} `,
         UserId: usuario.id,
         // Otros campos relacionados con la transacción
       });
