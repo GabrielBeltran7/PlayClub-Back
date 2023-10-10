@@ -1,4 +1,4 @@
-const { PuntosapostadosSuperfecta, User } = require("../db");
+const { PuntosapostadosSuperfecta,Crearcorredor, User } = require("../db");
 
 const postapuestaSuperfecta = async (req, res) => {
   const {
@@ -6,11 +6,11 @@ const postapuestaSuperfecta = async (req, res) => {
     puntosganados,
     puntosapostados,
     nombreapuesta,
-    puesto1,
-    puesto2,
-    puesto3,
-    puesto4,
     username,
+    iDprimerPuesto,
+    iDsegundoPuesto,
+    iDtercerPuesto,
+    iDcuartoPuesto
   } = req.body;
 
   // Convertir puntosapostados a un número entero utilizando parseInt
@@ -36,27 +36,26 @@ const postapuestaSuperfecta = async (req, res) => {
       usuario.cantidadtotal -= puntosapostadosNumeric;
     }
 
-    // Si el username es igual a "Admin," buscar al usuario "Admin" y sumar los puntos apostados
-    
-      // const adminUsuario = await User.findOne({
-      //   where: { username: "Admin" },
-      // });
-      // if (adminUsuario) {
-      //   adminUsuario.cantidadtotal += puntosapostadosNumeric;
-      //   await adminUsuario.save();
-      // }
-    
+  
 
     // Guardar los cambios en la base de datos del usuario
     await usuario.save();
 
+    const namecorreodor1 = await Crearcorredor.findByPk(iDprimerPuesto);
+    const namecorreodor2 = await Crearcorredor.findByPk(iDsegundoPuesto);
+    const namecorreodor3 = await Crearcorredor.findByPk(iDtercerPuesto);
+    const namecorreodor4 = await Crearcorredor.findByPk(iDcuartoPuesto);
     // Crear el registro de PuntosapostadosExacta
     const superfecta = await PuntosapostadosSuperfecta.create({
       nombreapuesta,
-      puesto1,
-      puesto2,
-      puesto3,
-      puesto4,
+      iDprimerPuesto,
+      iDsegundoPuesto,
+      iDtercerPuesto,
+      iDcuartoPuesto,
+      puesto1: namecorreodor1.nombre,
+      puesto2: namecorreodor2.nombre,
+      puesto3: namecorreodor3.nombre,
+      puesto4: namecorreodor4.nombre,
       username,
       puntosapostados: puntosapostadosNumeric, // Utilizamos el valor convertido
       puntosganados,

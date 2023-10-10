@@ -28,7 +28,7 @@ const agregarPuntosAUsuarios = async (req, res) => {
       if (!usuarios || usuarios.length === 0) {
         return res
           .status(404)
-          .json({ message: "No hay usuarios elegibles para agregar puntos." });
+          .json({ error: "No hay usuarios elegibles para agregar puntos." });
       }
 
       // Consulta al Usuario SubAdmin por nombre de usuario
@@ -38,20 +38,16 @@ const agregarPuntosAUsuarios = async (req, res) => {
 
       // Verificar si el Usuario SubAdmin existe
       if (!subadmin) {
-        return res
-          .status(404)
-          .json({
-            message: `El Usuario SubAdmin ${subadminUsername} no está autorizado para dar Bonos.`,
-          });
+        return res.status(404).json({
+          error: `El Usuario SubAdmin ${subadminUsername} no está autorizado para dar Bonos.`,
+        });
       }
 
       // Verificar si el Usuario SubAdmin tiene suficientes puntos
       if (subadmin.cantidadtotal < cantidad * usuarios.length) {
-        return res
-          .status(400)
-          .json({
-            error: `El Usuario ${subadminUsername} no tiene suficientes puntos para realizar esta operación.`,
-          });
+        return res.status(400).json({
+          error: `El Usuario ${subadminUsername} no tiene suficientes puntos para realizar esta operación.`,
+        });
       }
 
       // Restar la cantidad total de puntos al Usuario SubAdmin
@@ -70,21 +66,19 @@ const agregarPuntosAUsuarios = async (req, res) => {
         // Registrar la transacción de recarga de puntos en la tabla de registros
         await Recargarpuntos.create({
           cantidad,
-          usernameSubadmin: subadminUsername,
+          usernameAdmin: `Bonos de ${subadminUsername} `,
           UserId: usuario.id,
           // Otros campos relacionados con la transacción
         });
       }
 
-      return res
-        .status(200)
-        .json({
-          message: `Se agregaron ${cantidad} puntos a ${usuarios.length} usuarios.`,
-        });
+      return res.status(200).json({
+        message: `Se agregaron ${cantidad} puntos a ${usuarios.length} usuarios.`,
+      });
     } else
       return res
         .status(400)
-        .json({ message: `No eres usuario autorizado para dar bonos..` });
+        .json({ error: `No eres usuario autorizado para dar bonos..` });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
