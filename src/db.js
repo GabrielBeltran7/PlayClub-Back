@@ -13,6 +13,7 @@ const CarreraModel = require("./models/CrearCarrera");
 const CrearlinkcamarasModel = require("./models/CrearLinkcamara");
 const cargarGanadoresModel = require("./models/GanadoresCarrera");
 const postCarrerayGanadores = require("./models/GanadoresCarrera")
+const postPuntosPagadosModel = require("./models/PuntosPagados")
 
 // //conexion LOCAL
 // const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_DIALECT } = process.env;
@@ -53,6 +54,7 @@ CarreraModel(sequelize);
 CrearlinkcamarasModel(sequelize);
 cargarGanadoresModel(sequelize);
 postCarrerayGanadores(sequelize)
+postPuntosPagadosModel(sequelize)
 
 // aca vamos a crear las Relaciones
 const { User, Recargarpuntos, Crearcarrera, Crearcorredor, GanadoresCarrera } = sequelize.models;
