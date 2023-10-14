@@ -6,6 +6,7 @@ const postPuntosSubadminaUsuario = async (req, res) => {
 
   // Convierte la cantidad a un número entero
   const cantidadEntera = parseInt(cantidad, 10);
+  const precioEntero = parseInt(precio, 10);
 
   try {
     if (username) {
@@ -14,15 +15,23 @@ const postPuntosSubadminaUsuario = async (req, res) => {
 
       // Verifica si el subadministrador existe y si tiene suficientes puntos para la recarga
       if (!subadmin) {
-        return res.status(404).json({ error: "El subadministrador no existe." });
+        return res
+          .status(404)
+          .json({ error: "El subadministrador no existe." });
       }
 
       if (subadmin.cantidadtotal < cantidadEntera) {
-        return res.status(400).json({ error: "El subadministrador no tiene suficientes puntos para recargar." });
+        return res
+          .status(400)
+          .json({
+            error:
+              "El subadministrador no tiene suficientes puntos para recargar.",
+          });
       }
 
       // Resta la cantidad al subadministrador
-      const nuevaCantidadTotalSubadmin = subadmin.cantidadtotal - cantidadEntera;
+      const nuevaCantidadTotalSubadmin =
+        subadmin.cantidadtotal - cantidadEntera;
       await subadmin.update({ cantidadtotal: nuevaCantidadTotalSubadmin });
 
       // Busca al usuario por su ID
@@ -35,14 +44,14 @@ const postPuntosSubadminaUsuario = async (req, res) => {
       // Crea un nuevo registro en Recargarpuntos
       const nuevoRegistro = await Recargarpuntos.create({
         cantidad: cantidadEntera,
-        precio,
+        precio: precioEntero,
         usernameAdmin,
-        UserId
+        UserId,
       });
 
       // Calcula la suma de cantidades para el usuario y actualiza 'cantidadtotal'
       const totalCantidad = await Recargarpuntos.sum("cantidad", {
-        where: { UserId }
+        where: { UserId },
       });
 
       // Respuesta con el nuevo registro en Recargarpuntos
@@ -56,6 +65,5 @@ const postPuntosSubadminaUsuario = async (req, res) => {
 };
 
 module.exports = {
-  postPuntosSubadminaUsuario
+  postPuntosSubadminaUsuario,
 };
-
