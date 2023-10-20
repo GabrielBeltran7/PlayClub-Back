@@ -17,6 +17,9 @@ const {updatePuntosUsuario} =  require ("../Admin/CobrarPuntosUsuario")
 const {getPuntosPagados} = require ("../Admin/getPuntosPagados")
 
 const {getRecargarPuntos} = require("../Admin/getRecargarPuntos")
+const {deleteCorredor} = require("../Admin/DeleteCorredor")
+
+
 
 const usersRouter = Router();
 usersRouter.post("/postlinkcamaras", postLinkcamaras);
@@ -34,5 +37,6 @@ usersRouter.patch("/roluser", rolUsers);
 usersRouter.patch("/activarodesactivarcarrera", activaroDesactivarCarrera);
 usersRouter.patch("/cobrarpuntosusuario", updatePuntosUsuario);
 usersRouter.post("/carrerayganadores", postCarrerayGanadores);
+usersRouter.delete("/deletecorredor/:id", deleteCorredor);
 
 module.exports = usersRouter;

@@ -13,8 +13,9 @@ const { getCarreraGanadores } = require("../Users/getCarrerayGanadores");
 const {iniciarRecuperacionContrasena}= require ("../Users/RecuperarContraseña")
 const {actualizarPerfilUsuarios} = require ("../Users/ActualizarPerfilUsuarios")
 const {ActualizarPaswordUsuario} = require("../Users/ActualizarPaswordUsuario")
+const {deleteUser} = require("../Users/DeleteUsers")
 const usersRouter = Router();
-
+usersRouter.delete("/deleteuser/:username", deleteUser);
 usersRouter.post("/", postUserHandler);
 usersRouter.post("/login", loginUsers);
 usersRouter.patch("/actualizarperfilusuario", actualizarPerfilUsuarios);
@@ -29,5 +30,6 @@ usersRouter.get("/carreraactiva/:nombrecarrera", getCarreraActiva);
 usersRouter.get("/getmisapuestas/:username", getAllmisApuestas);
 usersRouter.get("/carreraycorredores/:nombrecarrera", getCarrerarycorredores);
 usersRouter.get("/ganadores/:nombrecarrera", getCarreraGanadores);
+
 
 module.exports = usersRouter;
